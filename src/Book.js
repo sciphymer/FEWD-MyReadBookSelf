@@ -6,8 +6,9 @@ class Book extends Component{
 		let books = this.props.books;
 		return(
 			<div>
-
-				{books.map((book)=>{
+			{
+				books!==undefined && books.map(book=>{
+					return(
 						<li>
 	                        <div className="book">
 	                          <div className="book-top">
@@ -26,9 +27,9 @@ class Book extends Component{
 	                          <div className="book-title">{book.title}</div>
 	                        <div className="book-authors">{(book.authors).join(" ")}</div>
 	                    </li>
-	                    }
-	          	)}
-
+	                )
+		        })
+	        }
 			</div>
 	)}}
 export default Book

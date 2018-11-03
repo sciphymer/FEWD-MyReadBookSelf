@@ -24,7 +24,9 @@ class BookShelf extends Component {
 	            <div className="list-books-content">
 	              <div>
 	                <div className="bookshelf">
-	                <CurrRead books={this.currReadingBooks}/>
+	                <CurrRead key={"currReadingBooks"} books={currReadingBooks}/>
+	                <WantToRead key={"wantToReadBooks"} books={wantToReadBooks}/>
+	                <Read key={"readBooks"} books={readBooks}/>
 	                </div>
 	              </div>
 	            </div>
