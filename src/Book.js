@@ -12,7 +12,7 @@ static propTypes = {
 		let books = this.props.books;
 		let state = "currentlyReading";
 		return(
-			<div>
+			<ol className="books-grid">
 			{
 				 books.map(book=>{
 					return(
@@ -30,13 +30,13 @@ static propTypes = {
 		                              </select>
 		                            </div>
 		                        </div>
-	                            </div>
-	                          <div className="book-title">{book.title}</div>
-	                        <div className="book-authors">{(book.authors).join(" ")}</div>
+	                          	<div className="book-title">{book.title}</div>
+	                        	<div className="book-authors">{(book.authors).join('\r\n')}</div>
+	                        </div>
 	                    </li>
 	                )
 		        })
 	        }
-			</div>
+			</ol>
 	)}}
 export default Book

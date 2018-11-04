@@ -12,11 +12,9 @@ static propTypes = {
 			<div>
         	  	<h2 className="bookshelf-title">Currently Reading</h2>
               	<div className="bookshelf-books">
-	                <ol className="books-grid">
 	                    <Book books={this.props.books}
 	                    	onUpdateBookShelf={this.props.onUpdateBookShelf}
 	                    />
-	                </ol>
               	</div>
             </div>
 			)
