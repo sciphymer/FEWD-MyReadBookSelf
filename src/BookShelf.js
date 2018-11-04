@@ -4,17 +4,20 @@ import { Link } from 'react-router-dom'
 import Read from './Read.js'
 import WantToRead from './WantToRead.js'
 import CurrRead from './CurrReading.js'
+import * as BooksAPI from './BooksAPI'
 
 class BookShelf extends Component {
 	static propTypes = {
-		books: PropTypes.array.isRequired
+		books: PropTypes.array.isRequired,
+		// onUpdateBookShelf: ProTypes.func.isRequired
 	}
 
 	render(){
+		console.log(this.props.books);
 
-		let currReadingBooks = this.props.books.filter((book) => (book.shelf)==="wantToRead");
-		let wantToReadBooks = this.props.books.filter((book) => (book.shelf)==="read");
-		let readBooks = this.props.books.filter((book) => (book.shelf)==="currentlyReading");
+		let currReadingBooks = this.props.books.filter((book) => (book.shelf)==="currentlyReading");
+		let wantToReadBooks = this.props.books.filter((book) => (book.shelf)==="wantToRead");
+		let readBooks = this.props.books.filter((book) => (book.shelf)==="read");
 
 		return(
 			<div className="list-books">
@@ -24,9 +27,18 @@ class BookShelf extends Component {
 	            <div className="list-books-content">
 	              <div>
 	                <div className="bookshelf">
-	                <CurrRead key={"currReadingBooks"} books={currReadingBooks}/>
-	                <WantToRead key={"wantToReadBooks"} books={wantToReadBooks}/>
-	                <Read key={"readBooks"} books={readBooks}/>
+		                <CurrRead key={"currReadingBooks"}
+		                	books={currReadingBooks}
+		                	onUpdateBookShelf={this.props.onUpdateBookShelf}
+		                />
+		                <WantToRead key={"wantToReadBooks"}
+		                	books={wantToReadBooks}
+		                	onUpdateBookShelf={this.props.onUpdateBookShelf}
+		                />
+		                <Read key={"readBooks"}
+		                	books={readBooks}
+		                	onUpdateBookShelf={this.props.onUpdateBookShelf}
+		                />
 	                </div>
 	              </div>
 	            </div>

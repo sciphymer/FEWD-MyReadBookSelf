@@ -4,7 +4,8 @@ import Book from './Book.js'
 
 class CurrReading extends Component{
 static propTypes = {
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    // onUpdateBookShelf: ProTypes.func.isRequired
   }
 	render(){
 		return(
@@ -12,7 +13,9 @@ static propTypes = {
         	  	<h2 className="bookshelf-title">Currently Reading</h2>
               	<div className="bookshelf-books">
 	                <ol className="books-grid">
-	                    <Book  key={this.props.books} books={this.props.books}/>
+	                    <Book books={this.props.books}
+	                    	onUpdateBookShelf={this.props.onUpdateBookShelf}
+	                    />
 	                </ol>
               	</div>
             </div>
