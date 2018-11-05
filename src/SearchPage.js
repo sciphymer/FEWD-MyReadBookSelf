@@ -9,6 +9,7 @@ class SearchPage extends Component{
 	}
 
 	handleQuery = (input)=>{
+		console.log("input:"+input)
 		BooksAPI.search(input).then((queryResult)=>{
 			this.setState({query:[queryResult]})
 		})

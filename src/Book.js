@@ -10,13 +10,12 @@ static propTypes = {
 
 	render(){
 		let books = this.props.books;
-		console.log(books)
 		return(
 			<ol className="books-grid">
 			{
-				 books.map((book)=>{
+				 books.map((book,index)=>{
 					return(
-						<li>
+						<li key={index+book+Math.random()}>
 	                        <div className="book">
 	                          <div className="book-top">
 	                          	{(book.imageLinks)?
