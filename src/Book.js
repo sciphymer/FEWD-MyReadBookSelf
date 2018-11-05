@@ -10,6 +10,7 @@ static propTypes = {
 
 	render(){
 		let books = this.props.books;
+		console.log(books);
 		return(
 			<ol className="books-grid">
 			{

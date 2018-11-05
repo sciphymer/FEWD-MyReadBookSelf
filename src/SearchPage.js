@@ -5,19 +5,20 @@ import Book from './Book.js'
 
 class SearchPage extends Component{
 	state = {
-		query: []
+		query:[]
 	}
 
 	handleQuery = (input)=>{
-		console.log("input:"+input)
 		BooksAPI.search(input).then((queryResult)=>{
-			this.setState({query:[queryResult]})
+			if(queryResult.length>0)
+				this.setState({query:queryResult})
+			else
+				this.setState({query:[]})
 		})
 	}
 
 	render(){
-		let queryLength = this.state.query.length;
-		console.log(this.state.query)
+
 		return(
 			<div className="search-books">
 		        <div className="search-books-bar">
@@ -40,9 +41,7 @@ class SearchPage extends Component{
 		          </div>
 		        </div>
 		        <div className="search-books-results">
-		          	{(queryLength>0 && queryLength!==null) &&
 		          		<Book books={this.state.query}/>
-		          	}
 		        </div>
 		     </div>
 	     )
