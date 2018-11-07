@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import Book from './Book.js'
 
 class CurrReading extends Component{
-static propTypes = {
-    books: PropTypes.array.isRequired,
-    // onUpdateBookShelf: ProTypes.func.isRequired
-  }
+// static propTypes = {
+//     books: PropTypes.array.isRequired,
+	   // onUpdateBookShelf: ProTypes.func.isRequired
+//   }
 	render(){
 		return(
 			<div>

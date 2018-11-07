@@ -8,9 +8,11 @@ import './App.css'
 
 class BooksApp extends Component {
 
-  state = {
-    books: []
+  constructor(props){
+    super(props);
+    this.state = { books: [] }
   }
+
 
   componentDidMount() {
      BooksAPI.getAll().then((books) => {
@@ -19,7 +21,6 @@ class BooksApp extends Component {
   }
 
   updateBookShelf = (book,shelf)=>{
-    console.log("updateBookShelf: " +book);
     BooksAPI.update(book,shelf).then(() => {
       BooksAPI.getAll().then((books) => {
       this.setState({books:books})
@@ -39,7 +40,10 @@ class BooksApp extends Component {
                     />
                 )}/>
                 <Route path='/search' render={() => (
-                    <SearchPage/>
+                    <SearchPage
+                      myReadList={this.state.books}
+                      onUpdateBookShelf={this.updateBookShelf}
+                    />
                 )}/>
             </Switch>
         </BrowserRouter>

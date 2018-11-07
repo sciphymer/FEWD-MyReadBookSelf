@@ -4,17 +4,14 @@ import { Link } from 'react-router-dom'
 import Read from './Read.js'
 import WantToRead from './WantToRead.js'
 import CurrRead from './CurrReading.js'
-import * as BooksAPI from './BooksAPI'
 
 class BookShelf extends Component {
-	static propTypes = {
-		books: PropTypes.array.isRequired,
-		// onUpdateBookShelf: ProTypes.func.isRequired
-	}
+	// static propTypes = {
+	// 	books: PropTypes.array.isRequired,
+	// 	onUpdateBookShelf: ProTypes.func.isRequired
+	// }
 
 	render(){
-		console.log(this.props.books);
-
 		let currReadingBooks = this.props.books.filter((book) => (book.shelf)==="currentlyReading");
 		let wantToReadBooks = this.props.books.filter((book) => (book.shelf)==="wantToRead");
 		let readBooks = this.props.books.filter((book) => (book.shelf)==="read");
