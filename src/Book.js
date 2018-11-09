@@ -18,7 +18,7 @@ class Book extends Component{
 
 				 	hasBooks?(books.map((book,index)=>{
 						return(
-							<li key={index+book+Math.random()}>
+							<li key={index}>
 		                        <div className="book">
 		                          <div className="book-top">
 		                          	{(book.imageLinks)?

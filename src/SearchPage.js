@@ -9,7 +9,8 @@ class SearchPage extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			query:[]
+			searchedBooks:[],
+			currSearchInput:""
 		}
 	}
 
@@ -20,14 +21,19 @@ class SearchPage extends Component{
 
 	handleQuery = (input)=>{
 		if(input!==""){
-			BooksAPI.search(input).then((queryResult)=>{
-				if(queryResult!==undefined)
-					this.setState({query:queryResult})
-				else
-					this.setState({query:[]})
-			})
+			this.setState({currSearchInput:input})
+			BooksAPI.search(input).then(
+				(queryResult)=>{
+					if(this.state.currSearchInput===input){
+						if(queryResult!==undefined)
+							this.setState({searchedBooks:queryResult})
+						else
+							this.setState({searchedBooks:[]})
+					}
+				}
+			)
 		}else
-			this.setState({query:[]})
+			this.setState({searchedBooks:[]})
 	}
 
 
@@ -51,10 +57,8 @@ class SearchPage extends Component{
 
 	render(){
 		let books=[];
-		if(this.state.query[0]!==undefined)
-			books=this.updateQueryBookStatus(this.props.myReadList,this.state.query);
-		console.log("updated query books:");
-		console.log(books);
+		if(this.state.searchedBooks[0]!==undefined)
+			books=this.updateQueryBookStatus(this.props.myReadList,this.state.searchedBooks);
 		return(
 			<div className="search-books">
 		        <div className="search-books-bar">
